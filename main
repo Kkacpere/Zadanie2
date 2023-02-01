@@ -1,0 +1,31 @@
+public class Node {
+    int key;
+    Node left;
+    Node right;
+}
+
+class BinarySearchTree {
+    Node root;
+
+    void insert(int key) {
+        root = insertRecursive(root, key);
+    }
+
+    private Node insertRecursive(Node current, int key) {
+        if (current == null) {
+            current = new Node();
+            current.key = key;
+            return current;
+        }
+
+        if (key < current.key) {
+            current.left = insertRecursive(current.left, key);
+        } else if (key > current.key) {
+            current.right = insertRecursive(current.right, key);
+        } else {
+            return current;
+        }
+
+        return current;
+    }
+}
